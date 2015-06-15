@@ -1,2 +1,2 @@
 # fcrepo-karaf
-Provides resources for running a Fedora Commons repository framework in Karaf
+Provides resources for provisioning Fedora Commons repository modules in Karaf

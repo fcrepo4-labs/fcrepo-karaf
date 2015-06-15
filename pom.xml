@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.fcrepo</groupId>
+    <artifactId>fcrepo</artifactId>
+    <version>4.2.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>fcrepo-karaf</artifactId>
+  <name>Fedora Repository Karaf (OSGi) Provisioning Module</name>
+  <description>Provides karaf provisioning functionality for the Fedora Commons repository framework.</description>
+
+  <properties>
+    <!-- Use ${project_name} instead of ${project.artifactId} to avoid incorrect
+      replacements of "fcrepo4" in child modules (for scm, site-distribution, etc -->
+    <project_name>fcrepo-karaf</project_name>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.copyrightYear>2015</project.copyrightYear>
+    <!-- https://github.com/github/maven-plugins/blob/master/README.md -->
+    <github.global.server>github</github.global.server>
+    <!-- the dropwizard bundles require jackson 2.5.0 -->
+    <jackson25.version>2.5.0</jackson25.version>
+    <!-- the modeshape bundle requires javax.servlet v3.1.0 -->
+    <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+    <!-- this is the latest version of OGSi-ified spring -->
+    <spring.version>4.1.2.RELEASE_1</spring.version>
+
+    <!-- transitive dependencies not defined in fcrepo4/pom.xml -->
+    <commons.codec.version>1.6</commons.codec.version>
+    <jcr.version>2.0</jcr.version>
+    <javax.annotation-api.version>1.2</javax.annotation-api.version>
+    <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+    <osgi-resource-locator.version>1.0.1</osgi-resource-locator.version>
+  </properties>
+
+  <dependencies>
+  </dependencies>
+
+  <build>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
+              <artifacts>
+                <artifact>
+                  <file>target/classes/features.xml</file>
+                  <type>xml</type>
+                  <classifier>features</classifier>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
