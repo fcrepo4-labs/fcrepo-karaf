@@ -18,7 +18,7 @@
 
     <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
     
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-context/${spring.version}</bundle>
+    <feature version="${spring.version}">spring</feature>
     
     <bundle>mvn:org.fcrepo/fcrepo-metrics/${project.version}</bundle>
   </feature>
@@ -38,17 +38,9 @@
 
     <feature version="${project.version}">fcrepo-mint</feature>
     
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-beans/${spring.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-context/${spring.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-aop/${spring.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-expression/${spring.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-core/${spring.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.springframework/spring-web/${spring.version}</bundle>
-
     <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
     <bundle dependency="true">mvn:commons-codec/commons-codec/1.6</bundle>
     <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
-    <bundle dependency="true">wrap:mvn:aopalliance/aopalliance/1.0</bundle>
     
     <bundle dependency="true">mvn:javax.jcr/jcr/2.0</bundle>
     <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/1.2</bundle>
