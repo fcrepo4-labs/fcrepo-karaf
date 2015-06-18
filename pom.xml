@@ -28,6 +28,13 @@
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
     <!-- this is the latest version of OGSi-ified spring -->
     <spring.version>4.1.2.RELEASE_1</spring.version>
+
+    <!-- transitive dependencies not defined in fcrepo4/pom.xml -->
+    <commons.codec.version>1.6</commons.codec.version>
+    <jcr.version>2.0</jcr.version>
+    <javax.annotation-api.version>1.2</javax.annotation-api.version>
+    <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+    <osgi-resource-locator.version>1.0.1</osgi-resource-locator.version>
   </properties>
 
   <dependencies>

@@ -39,13 +39,13 @@
     <feature version="${project.version}">fcrepo-mint</feature>
     
     <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
-    <bundle dependency="true">mvn:commons-codec/commons-codec/1.6</bundle>
+    <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
     <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
     
-    <bundle dependency="true">mvn:javax.jcr/jcr/2.0</bundle>
-    <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/1.2</bundle>
+    <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
+    <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation-api.version}</bundle>
     <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
-    <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/2.0.1</bundle>
+    <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/${javax.ws.rs-api.version}</bundle>
     
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson2.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson2.version}</bundle>
@@ -56,12 +56,12 @@
     
     <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-common/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.bundles.repackaged/jersey-guava/${jersey.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/2.3.0</bundle>
+    <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.hk2/hk2-api/${hk2.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.hk2/hk2-utils/${hk2.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.hk2.external/aopalliance-repackaged/${hk2.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2/osgi-resource-locator/1.0.1</bundle>
-    
+    <bundle dependency="true">mvn:org.glassfish.hk2/osgi-resource-locator/${osgi-resource-locator.version}</bundle>
+
     <bundle>mvn:org.fcrepo/fcrepo-kernel/${project.version}</bundle>
     <bundle>mvn:org.fcrepo/fcrepo-kernel-impl/${project.version}</bundle>
   </feature>
