@@ -35,10 +35,17 @@
     <javax.annotation-api.version>1.2</javax.annotation-api.version>
     <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
     <osgi-resource-locator.version>1.0.1</osgi-resource-locator.version>
+    <!-- plugin versions -->
+    <release.plugin.version>2.5.1</release.plugin.version>
+    <scmgit.plugin.version>1.8.1</scmgit.plugin.version>
   </properties>
 
-  <dependencies>
-  </dependencies>
+  <scm>
+    <connection>scm:git:git://github.com/fcrepo4-labs/${project_name}.git</connection>
+    <developerConnection>scm:git:git@github.com:fcrepo4-labs/${project_name}.git</developerConnection>
+    <url>https://github.com/fcrepo4-labs/${project.name}</url>
+    <tag>HEAD</tag>
+  </scm>
 
   <build>
 
@@ -72,6 +79,22 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${release.plugin.version}</version>
+        <configuration>
+          <!-- see http://jira.codehaus.org/browse/MRELEASE-424 -->
+          <mavenExecutorId>forked-path</mavenExecutorId>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>${scmgit.plugin.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
