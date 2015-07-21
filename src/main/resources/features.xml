@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="fcrepo-karaf">
 
+  <repository>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</repository>
+
   <feature name="fcrepo-metrics" version="${project.version}" description="Fedora Repository Metrics Module" resolver="(obr)" start-level="50">
     <details>Provides runtime metrics functionality for the Fedora Commons repository framework.</details>
+
+    <feature version="${spring.version}">spring</feature>
 
     <bundle dependency="true">mvn:io.dropwizard.metrics/metrics-core/${metrics.version}</bundle>
     <bundle dependency="true">mvn:io.dropwizard.metrics/metrics-graphite/${metrics.version}</bundle>
@@ -17,9 +21,7 @@
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson25.version}</bundle>
 
     <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
-    
-    <feature version="${spring.version}">spring</feature>
-    
+
     <bundle>mvn:org.fcrepo/fcrepo-metrics/${project.version}</bundle>
   </feature>
 
@@ -28,32 +30,59 @@
     <details>Provides URI minting functionality for the Fedora Commons repository framework.</details>
 
     <feature version="${project.version}">fcrepo-metrics</feature>
-    
+
+    <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.httpcomponents/httpcore-osgi/${httpcomponents.version}</bundle>
+
     <bundle>mvn:org.fcrepo/fcrepo-mint/${project.version}</bundle>
   </feature>
 
-
-  <feature name="fcrepo-kernel" version="${project.version}" description="Fedora Repository Kernel Module" resolver="(obr)" start-level="50">
-    <details>Provides kernel (core) functionality for the Fedora Commons repository framework.</details>
+  <feature name="fcrepo-kernel-api" version="${project.version}" description="Fedora Repository Kernel API Module" resolver="(obr)" start-level="50">
+    <details>Provides kernel API interfaces for the Fedora Commons repository framework.</details>
 
     <feature version="${project.version}">fcrepo-mint</feature>
-    
-    <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
-    <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
-    <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
-    
+    <feature version="${spring.version}">spring</feature>
+
     <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
+    <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+
+    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-core/${jena.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-arq/${jena.version}</bundle>
+    
+    <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
+    
+    <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
+
+    <bundle>mvn:org.fcrepo/fcrepo-kernel-api/${project.version}</bundle>
+  </feature>
+
+  <feature name="fcrepo-kernel-modeshape" version="${project.version}" description="Fedora Repository Kernel Module" resolver="(obr)" start-level="50">
+    <details>Provides modeshape-based kernel functionality for the Fedora Commons repository framework.</details>
+
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-mint</feature>
+    <feature version="${jta.feature.version}">transaction</feature>
+
     <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation-api.version}</bundle>
     <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
     <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/${javax.ws.rs-api.version}</bundle>
-    
+    <bundle dependency="true">mvn:javax.security.jacc/javax.security.jacc-api/${javax.security.jacc.version}</bundle>
+    <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
+
+    <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+
+    <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
+    <bundle dependency="true">mvn:commons-lang/commons-lang/${commons.lang.version}</bundle>
+    <bundle dependency="true">mvn:commons-io/commons-io/${commons.io.version}</bundle>
+   
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson2.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson2.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson2.version}</bundle>
 
     <bundle dependency="true">wrap:mvn:org.apache.jena/jena-core/${jena.version}</bundle>
     <bundle dependency="true">wrap:mvn:org.apache.jena/jena-arq/${jena.version}</bundle>
-    
+
     <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-common/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.bundles.repackaged/jersey-guava/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
@@ -62,35 +91,91 @@
     <bundle dependency="true">mvn:org.glassfish.hk2.external/aopalliance-repackaged/${hk2.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.hk2/osgi-resource-locator/${osgi-resource-locator.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-kernel/${project.version}</bundle>
-    <bundle>mvn:org.fcrepo/fcrepo-kernel-impl/${project.version}</bundle>
+    <bundle dependency="true">mvn:com.datastax.cassandra/cassandra-driver-core/${cassandra.driver.version}</bundle>
+    <bundle dependency="true">mvn:org.mongodb/mongo-java-driver/${mongodb.driver.version}</bundle>
+
+    <bundle dependency="true">mvn:io.netty/netty-handler/${netty.version}</bundle>
+    <bundle dependency="true">mvn:io.netty/netty-codec/${netty.version}</bundle>
+    <bundle dependency="true">mvn:io.netty/netty-transport/${netty.version}</bundle>
+    <bundle dependency="true">mvn:io.netty/netty-buffer/${netty.version}</bundle>
+    <bundle dependency="true">mvn:io.netty/netty-common/${netty.version}</bundle>
+
+    <bundle dependency="true">mvn:org.modeshape/modeshape-jcr/${modeshape.version}</bundle>
+    <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
+    <bundle dependency="true">mvn:org.modeshape/modeshape-schematic/${modeshape.version}</bundle>
+    <bundle dependency="true">mvn:org.modeshape/modeshape-common/${modeshape.version}</bundle>
+
+    <bundle dependency="true">mvn:org.infinispan/infinispan-core/${infinispan.version}</bundle>
+    <bundle dependency="true">mvn:org.infinispan/infinispan-commons/${infinispan.version}</bundle>
+
+    <bundle dependency="true">mvn:org.apache.tika/tika-core/${tika.version}</bundle>
+    <bundle dependency="true">mvn:joda-time/joda-time/${joda.time.version}</bundle>
+    <bundle dependency="true">mvn:org.mapdb/mapdb/${mapdb.version}</bundle>
+    <bundle dependency="true">mvn:org.jgroups/jgroups/${jgroups.version}</bundle>
+    <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${jboss.logging.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.jboss.marshalling/jboss-marshalling/${jboss.marshalling.version}</bundle>
+
+    <bundle dependency="true">mvn:io.dropwizard.metrics/metrics-core/${metrics.version}</bundle>
+
+    <bundle>mvn:org.fcrepo/fcrepo-kernel-modeshape/${project.version}</bundle>
   </feature>
 
 
   <feature name="fcrepo-jms" version="${project.version}" description="Fedora Repository JMS Module" resolver="(obr)" start-level="50">
     <details>Provides JMS functionality for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
-    
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
+    <feature>activemq</feature>
+
     <bundle>mvn:org.fcrepo/fcrepo-jms/${project.version}</bundle>
   </feature>
-  
+
 
   <feature name="fcrepo-http-commons" version="${project.version}" description="Fedora Repository Common HTTP Module" resolver="(obr)" start-level="50">
     <details>Provides common HTTP functionality for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
+    <feature version="${project.version}">fcrepo-metrics</feature>
+    <feature version="${project.version}">fcrepo-mint</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-serialization</feature>
-      
+    <feature version="${spring.version}">spring-web</feature>
+
+    <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-server/${jersey.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-client/${jersey.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.jersey.media/jersey-media-json-jackson/${jersey.version}</bundle>
+    <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson2.version}</bundle>
+    <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson2.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.jersey.media/jersey-media-multipart/${jersey.version}</bundle>
+    <bundle dependency="true">mvn:org.jvnet.mimepull/mimepull/${mimepull.version}</bundle>
+    <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation.version}</bundle>
+
     <bundle>mvn:org.fcrepo/fcrepo-http-commons/${project.version}</bundle>
   </feature>
   
+  <feature name="fcrepo-http-api" version="${project.version}" description="Fedora Repository HTTP API Module" resolver="(obr)" start-level="50">
+    <details>Provides HTTP API functionality for the Fedora Commons repository framework.</details>
+
+    <feature version="${project.version}">fcrepo-http-commons</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
+    <feature version="${project.version}">fcrepo-serialization</feature>
+
+    <bundle dependency="true">mvn:org.apache.velocity/velocity/${velocity.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.apache.velocity/velocity-tools/${velocity.tools.version}</bundle>
+    <bundle dependency="true">mvn:commons-collections/commons-collections/${commons.collections.version}</bundle>
+
+    <bundle>mvn:org.fcrepo/fcrepo-http-api/${project.version}</bundle>
+  </feature>
+
+
 
   <feature name="fcrepo-auth-common" version="${project.version}" description="Fedora Repository Common Authentication Module" resolver="(obr)" start-level="50">
     <details>Provides common authentication functionality for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
-    <feature version="${project.version}">fcrepo-http-commons</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
 
     <bundle>mvn:org.fcrepo/fcrepo-auth-common/${project.version}</bundle>
   </feature>
@@ -99,7 +184,8 @@
   <feature name="fcrepo-serialization" version="${project.version}" description="Fedora Repository Serialization Module" resolver="(obr)" start-level="50">
     <details>Provides serialization functionality for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
 
     <bundle>mvn:org.fcrepo/fcrepo-serialization/${project.version}</bundle>
   </feature>
@@ -108,8 +194,9 @@
   <feature name="fcrepo-connector-file" version="${project.version}" description="Fedora Repository File Connector Module" resolver="(obr)" start-level="50">
     <details>Provides Binary File storage functionality for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
-      
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
+
     <bundle>mvn:org.fcrepo/fcrepo-connector-file/${project.version}</bundle>
   </feature>
 
@@ -117,52 +204,67 @@
   <feature name="fcrepo-transform" version="${project.version}" description="Fedora Repository Transform Module" resolver="(obr)" start-level="50">
     <details>Provides tranformation functionality for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-http-api</feature>
-        
+    <feature version="${project.version}">fcrepo-metrics</feature>
+
+    <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation-api.version}</bundle>
+    <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/${javax.ws.rs-api.version}</bundle>
+    <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
+
+    <bundle dependency="true">mvn:commons-io/commons-io/${commons.io.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.httpcomponents/httpcore-osgi/${httpcomponents.version}</bundle>
+    <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+
+    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-core/${jena.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-arq/${jena.version}</bundle>
+
+    <bundle dependency="true">mvn:org.glassfish.hk2/hk2-api/${hk2.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
+
+    <bundle dependency="true">wrap:mvn:org.apache.marmotta/ldpath-core/${ldpath.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.apache.marmotta/ldpath-backend-jena/${ldpath.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.apache.marmotta/ldpath-api/${ldpath.version}</bundle>
+
     <bundle>mvn:org.fcrepo/fcrepo-transform/${project.version}</bundle>
   </feature>
 
 
-  <feature name="fcrepo-http-api" version="${project.version}" description="Fedora Repository HTTP API Module" resolver="(obr)" start-level="50">
-    <details>Provides HTTP API functionality for the Fedora Commons repository framework.</details>
-
-    <feature version="${project.version}">fcrepo-http-commons</feature>
-    <feature version="${project.version}">fcrepo-auth-common</feature>
-    <feature version="${project.version}">fcrepo-connector-file</feature>
-    <feature version="${project.version}">fcrepo-kernel</feature>
-
-    <bundle>mvn:org.fcrepo/fcrepo-http-api/${project.version}</bundle>
-  </feature>
-
 
   <feature name="fcrepo-auth-xacml" version="${project.version}" description="Fedora Repository XACML Authentication Module" resolver="(obr)" start-level="50">
     <details>Provides XACML Authentication functionality for the Fedora Commons repository framework.</details>
+    <!-- TODO -->
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-auth-common</feature>
 
-    <bundle>wrap:mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
-    <bundle>wrap:mvn:org.fcrepo/fcrepo-module-auth-xacml/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-module-auth-xacml/${project.version}</bundle>
   </feature>
 
 
   <feature name="fcrepo-auth-rbacl" version="${project.version}" description="Fedora Repository Role Based Authentication Module" resolver="(obr)" start-level="50">
     <details>Provides Role Based Authentication functionality for the Fedora Commons repository framework.</details>
+    <!-- TODO -->
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-auth-common</feature>
 
-    <bundle>wrap:mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
-    <bundle>wrap:mvn:org.fcrepo/fcrepo-auth-roles-basic/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-basic/${project.version}</bundle>
   </feature>
 
 
   <feature name="fcrepo-audit" version="${project.version}" description="Fedora Repository Audit Module" resolver="(obr)" start-level="50">
     <details>Provides Audit functionality for the Fedora Commons repository framework.</details>
+    <!-- TODO -->
 
-    <feature version="${project.version}">fcrepo-kernel</feature>
-      
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
+    <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
+
     <bundle>mvn:org.fcrepo/fcrepo-audit/${project.version}</bundle>
   </feature>
 
