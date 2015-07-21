@@ -27,14 +27,35 @@
     <!-- the modeshape bundle requires javax.servlet v3.1.0 -->
     <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
     <!-- this is the latest version of OGSi-ified spring -->
-    <spring.version>4.1.2.RELEASE_1</spring.version>
+    <spring.version>4.1.6.RELEASE_1</spring.version>
+    <!-- need an older version of joda-time -->
+    <joda.time.version>1.6.2</joda.time.version>
 
     <!-- transitive dependencies not defined in fcrepo4/pom.xml -->
-    <commons.codec.version>1.6</commons.codec.version>
-    <jcr.version>2.0</jcr.version>
     <javax.annotation-api.version>1.2</javax.annotation-api.version>
+    <javax.security.jacc.version>1.5</javax.security.jacc.version>
+    <javax.validation.version>1.1.0.Final</javax.validation.version>
     <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+    <commons.codec.version>1.6</commons.codec.version>
+    <commons.io.version>2.4</commons.io.version>
+    <commons.lang.version>2.6</commons.lang.version>
+    <commons.collections.version>3.2.1</commons.collections.version>
+    <ldpath.version>3.3.0</ldpath.version>
+    <jboss.logging.version>3.1.3.GA</jboss.logging.version>
+    <jboss.marshalling.version>1.4.10.Final</jboss.marshalling.version>
+    <jcr.version>2.0</jcr.version>
+    <jta.feature.version>1.1.1</jta.feature.version>
     <osgi-resource-locator.version>1.0.1</osgi-resource-locator.version>
+    <netty.version>4.0.29.Final</netty.version>
+    <mapdb.version>1.0.6</mapdb.version>
+    <mimepull.version>1.9.3</mimepull.version>
+    <tika.version>1.6</tika.version>
+    <velocity.version>1.7</velocity.version>
+    <velocity.tools.version>2.0</velocity.tools.version>
+
+    <mongodb.driver.version>3.0.0</mongodb.driver.version>
+    <cassandra.driver.version>2.1.7.1</cassandra.driver.version>
+
     <!-- plugin versions -->
     <release.plugin.version>2.5.1</release.plugin.version>
     <scmgit.plugin.version>1.8.1</scmgit.plugin.version>
