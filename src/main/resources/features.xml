@@ -35,6 +35,9 @@
     <bundle dependency="true">mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
     <bundle dependency="true">mvn:org.apache.httpcomponents/httpcore-osgi/${httpcomponents.version}</bundle>
 
+    <bundle dependency="true">mvn:commons-lang/commons-lang/${commons.lang.version}</bundle>
+    <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+
     <bundle>mvn:org.fcrepo/fcrepo-mint/${project.version}</bundle>
   </feature>
 
@@ -150,6 +153,13 @@
     <bundle dependency="true">mvn:org.glassfish.jersey.media/jersey-media-multipart/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.jvnet.mimepull/mimepull/${mimepull.version}</bundle>
     <bundle dependency="true">mvn:javax.validation/validation-api/${javax.validation.version}</bundle>
+    <bundle dependency="true">mvn:io.dropwizard.metrics/metrics-jersey2/${metrics.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-rio-api/${sesame.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-rio-ntriples/${sesame.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-rio-rdfxml/${sesame.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-rio-turtle/${sesame.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-model/${sesame.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-util/${sesame.version}</bundle>
 
     <bundle>mvn:org.fcrepo/fcrepo-http-commons/${project.version}</bundle>
   </feature>
