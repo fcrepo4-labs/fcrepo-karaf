@@ -241,14 +241,16 @@
   </feature>
 
 
-
   <feature name="fcrepo-auth-xacml" version="${project.version}" description="Fedora Repository XACML Authentication Module" resolver="(obr)" start-level="50">
     <details>Provides XACML Authentication functionality for the Fedora Commons repository framework.</details>
-    <!-- TODO -->
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-auth-common</feature>
+    <feature version="${project.version}">fcrepo-http-commons</feature>
+
+    <bundle dependency="true">wrap:mvn:org.jboss.security/jboss-xacml/${jboss.security.version}</bundle>
+    <bundle dependency="true">wrap:mvn:org.jboss.security/jboss-sunxacml/${jboss.security.version}</bundle>
 
     <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
     <bundle>mvn:org.fcrepo/fcrepo-module-auth-xacml/${project.version}</bundle>
@@ -257,11 +259,11 @@
 
   <feature name="fcrepo-auth-rbacl" version="${project.version}" description="Fedora Repository Role Based Authentication Module" resolver="(obr)" start-level="50">
     <details>Provides Role Based Authentication functionality for the Fedora Commons repository framework.</details>
-    <!-- TODO -->
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-auth-common</feature>
+    <feature version="${project.version}">fcrepo-http-commons</feature>
 
     <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
     <bundle>mvn:org.fcrepo/fcrepo-auth-roles-basic/${project.version}</bundle>
@@ -270,7 +272,6 @@
 
   <feature name="fcrepo-audit" version="${project.version}" description="Fedora Repository Audit Module" resolver="(obr)" start-level="50">
     <details>Provides Audit functionality for the Fedora Commons repository framework.</details>
-    <!-- TODO -->
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
