@@ -44,7 +44,6 @@
   <feature name="fcrepo-kernel-api" version="${project.version}" description="Fedora Repository Kernel API Module" resolver="(obr)" start-level="50">
     <details>Provides kernel API interfaces for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-mint</feature>
     <feature version="${spring.version}">spring</feature>
 
     <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
@@ -56,6 +55,7 @@
     <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
     
     <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
+    <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
 
     <bundle>mvn:org.fcrepo/fcrepo-kernel-api/${project.version}</bundle>
   </feature>
