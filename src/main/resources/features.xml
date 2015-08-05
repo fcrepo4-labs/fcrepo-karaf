@@ -50,8 +50,11 @@
     <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
     <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
 
-    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-core/${jena.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-arq/${jena.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.jena/jena-osgi/${jena.version}</bundle>
+    <bundle dependency="true">mvn:com.github.jsonld-java/jsonld-java/${jsonld.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.commons/commons-csv/${commons.csv.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.commons/commons-lang3/${commons.lang3.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.thrift/libthrift/${thrift.version}</bundle>
     
     <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
     
@@ -83,9 +86,6 @@
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson2.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson2.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson2.version}</bundle>
-
-    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-core/${jena.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-arq/${jena.version}</bundle>
 
     <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-common/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.bundles.repackaged/jersey-guava/${jersey.version}</bundle>
@@ -227,9 +227,6 @@
     <bundle dependency="true">mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
     <bundle dependency="true">mvn:org.apache.httpcomponents/httpcore-osgi/${httpcomponents.version}</bundle>
     <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
-
-    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-core/${jena.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.apache.jena/jena-arq/${jena.version}</bundle>
 
     <bundle dependency="true">mvn:org.glassfish.hk2/hk2-api/${hk2.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
