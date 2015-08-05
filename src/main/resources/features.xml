@@ -57,7 +57,6 @@
     
     <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
     <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
 
     <bundle>mvn:org.fcrepo/fcrepo-kernel-api/${project.version}</bundle>
   </feature>
