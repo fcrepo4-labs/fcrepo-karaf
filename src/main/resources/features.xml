@@ -30,6 +30,7 @@
     <details>Provides URI minting functionality for the Fedora Commons repository framework.</details>
 
     <feature version="${project.version}">fcrepo-metrics</feature>
+    <feature version="${project.version}">fcrepo-kernel-api</feature>
 
     <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
     <bundle dependency="true">mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
@@ -44,7 +45,6 @@
   <feature name="fcrepo-kernel-api" version="${project.version}" description="Fedora Repository Kernel API Module" resolver="(obr)" start-level="50">
     <details>Provides kernel API interfaces for the Fedora Commons repository framework.</details>
 
-    <feature version="${project.version}">fcrepo-mint</feature>
     <feature version="${spring.version}">spring</feature>
 
     <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
@@ -59,6 +59,7 @@
     <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
     
     <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
+    <bundle dependency="true">mvn:javax.servlet/javax.servlet-api/${javax.servlet-api.version}</bundle>
 
     <bundle>mvn:org.fcrepo/fcrepo-kernel-api/${project.version}</bundle>
   </feature>
@@ -68,7 +69,7 @@
     <details>Provides modeshape-based kernel functionality for the Fedora Commons repository framework.</details>
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
-    <feature version="${project.version}">fcrepo-mint</feature>
+    <feature version="${project.version}">fcrepo-metrics</feature>
     <feature version="${jta.feature.version}">transaction</feature>
 
     <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation-api.version}</bundle>
@@ -78,6 +79,8 @@
     <bundle dependency="true">mvn:javax.jcr/jcr/${jcr.version}</bundle>
 
     <bundle dependency="true">mvn:com.google.guava/guava/${guava.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.httpcomponents/httpclient-osgi/${httpclient.version}</bundle>
+    <bundle dependency="true">mvn:org.apache.httpcomponents/httpcore-osgi/${httpcomponents.version}</bundle>
 
     <bundle dependency="true">mvn:commons-codec/commons-codec/${commons.codec.version}</bundle>
     <bundle dependency="true">mvn:commons-lang/commons-lang/${commons.lang.version}</bundle>
