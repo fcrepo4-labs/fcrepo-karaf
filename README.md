@@ -23,3 +23,6 @@ And to install individual `fcrepo` modules:
 
     karaf> feature:install fcrepo-http-api
 
+## Maintainers
+
+* [Aaron Coburn](https://github.com/acoburn)
