@@ -226,7 +226,7 @@
     <bundle dependency="true">wrap:mvn:org.apache.marmotta/ldpath-api/${ldpath.version}</bundle>
 
     <!-- this anticipates that the fcrepo-transform module uses the new org.fcrepo.transform groupId, based on fcrepo-1670 -->
-    <bundle>mvn:org.fcrepo.transform/fcrepo-transform/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-transform/${project.version}</bundle>
   </feature>
 
 
