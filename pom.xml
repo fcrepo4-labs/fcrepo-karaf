@@ -43,6 +43,8 @@
     <commons.collections.version>3.2.1</commons.collections.version>
     <commons.csv.version>1.0</commons.csv.version>
     <commons-lang2.version>2.4</commons-lang2.version>
+    <fcrepo-transform.version>4.4.1-SNAPSHOT</fcrepo-transform.version>
+    <fcrepo-audit.version>4.4.1-SNAPSHOT</fcrepo-audit.version>
     <javax.annotation-api.version>1.2</javax.annotation-api.version>
     <javax.security.jacc.version>1.5</javax.security.jacc.version>
     <javax.validation.version>1.1.0.Final</javax.validation.version>
