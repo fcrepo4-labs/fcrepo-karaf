@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.fcrepo</groupId>
     <artifactId>fcrepo</artifactId>
-    <version>4.3.1-SNAPSHOT</version>
+    <version>4.4.0</version>
   </parent>
 
   <artifactId>fcrepo-karaf</artifactId>
@@ -99,4 +99,8 @@
       </plugin>
     </plugins>
   </build>
+
+  <scm>
+    <tag>fcrepo-karaf-4.4.0</tag>
+  </scm>
 </project>
