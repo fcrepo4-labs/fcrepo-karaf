@@ -2,6 +2,8 @@
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.2.1" name="fcrepo-karaf">
 
   <repository>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features</repository>
+  <repository>mvn:org.infinispan/infinispan-core/${infinispan.version}/xml/features</repository>
+  <repository>mvn:org.infinispan/infinispan-cachestore-leveldb/${infinispan.version}/xml/features</repository>
 
   <feature name="fcrepo-kernel-api" version="${project.version}" description="Fedora Repository Kernel API Module" resolver="(obr)" start-level="50">
     <details>Provides kernel API interfaces for the Fedora Commons repository framework.</details>
@@ -76,17 +78,11 @@
     <feature version="${project.version}">fcrepo-metrics</feature>
     <feature version="${project.version}">fcrepo-mint</feature>
 
-    <bundle dependency="true">mvn:javax.annotation/javax.annotation-api/${javax.annotation-api.version}</bundle>
-    <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/${javax.ws.rs-api.version}</bundle>
-    <bundle dependency="true">mvn:javax.security.jacc/javax.security.jacc-api/${javax.security.jacc.version}</bundle>
+    <feature version="${infinispan.version}">infinispan-core</feature>
+    <feature version="${infinispan.version}">infinispan-commons</feature>
+    <feature version="${infinispan.version}">infinispan-cachestore-leveldb-jni</feature>
 
-    <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-common/${jersey.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.jersey.bundles.repackaged/jersey-guava/${jersey.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2/hk2-api/${hk2.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2/hk2-utils/${hk2.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2.external/aopalliance-repackaged/${hk2.version}</bundle>
-    <bundle dependency="true">mvn:org.glassfish.hk2/osgi-resource-locator/${osgi-resource-locator.version}</bundle>
+    <bundle dependency="true">mvn:javax.security.jacc/javax.security.jacc-api/${javax.security.jacc.version}</bundle>
 
     <bundle dependency="true">mvn:com.datastax.cassandra/cassandra-driver-core/${cassandra.driver.version}</bundle>
     <bundle dependency="true">mvn:org.mongodb/mongo-java-driver/${mongodb.driver.version}</bundle>
@@ -101,15 +97,11 @@
     <bundle dependency="true">mvn:org.modeshape/modeshape-schematic/${modeshape.version}</bundle>
     <bundle dependency="true">mvn:org.modeshape/modeshape-common/${modeshape.version}</bundle>
 
-    <bundle dependency="true">mvn:org.infinispan/infinispan-core/${infinispan.version}</bundle>
-    <bundle dependency="true">mvn:org.infinispan/infinispan-commons/${infinispan.version}</bundle>
-
     <bundle dependency="true">mvn:org.apache.tika/tika-core/${tika.version}</bundle>
     <bundle dependency="true">mvn:joda-time/joda-time/${joda.time.version}</bundle>
     <bundle dependency="true">mvn:org.mapdb/mapdb/${mapdb.version}</bundle>
     <bundle dependency="true">mvn:org.jgroups/jgroups/${jgroups.version}</bundle>
     <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${jboss.logging.version}</bundle>
-    <bundle dependency="true">wrap:mvn:org.jboss.marshalling/jboss-marshalling/${jboss.marshalling.version}</bundle>
 
     <bundle>mvn:org.fcrepo/fcrepo-kernel-modeshape/${project.version}</bundle>
   </feature>
@@ -121,7 +113,8 @@
     <feature>activemq</feature>
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
-    <!-- after fcrepo-1694 is merged, the dependency on fcrepo-kernel-modeshape can be removed -->
+    <!-- after fcrepo-1694 (https://github.com/fcrepo4/fcrepo4/pull/882) is merged,
+          the dependency on fcrepo-kernel-modeshape can be removed -->
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
 
     <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
@@ -169,10 +162,20 @@
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-serialization</feature>
 
+    <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/${javax.ws.rs-api.version}</bundle>
+
+    <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-common/${jersey.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.jersey.bundles.repackaged/jersey-guava/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-server/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.core/jersey-client/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.media/jersey-media-json-jackson/${jersey.version}</bundle>
     <bundle dependency="true">mvn:org.glassfish.jersey.media/jersey-media-multipart/${jersey.version}</bundle>
+
+    <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.hk2/hk2-api/${hk2.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.hk2/hk2-utils/${hk2.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.hk2.external/aopalliance-repackaged/${hk2.version}</bundle>
+    <bundle dependency="true">mvn:org.glassfish.hk2/osgi-resource-locator/${osgi-resource-locator.version}</bundle>
 
     <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson2.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson2.version}</bundle>
