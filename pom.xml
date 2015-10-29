@@ -57,7 +57,7 @@
     <netty.version>4.0.29.Final</netty.version>
     <osgi-resource-locator.version>1.0.1</osgi-resource-locator.version>
     <thrift.version>0.9.2</thrift.version>
-    <tika.version>1.6</tika.version>
+    <tika.version>1.8</tika.version>
     <velocity.tools.version>2.0</velocity.tools.version>
   </properties>
 
