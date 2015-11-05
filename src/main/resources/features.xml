@@ -33,7 +33,7 @@
 
     <bundle dependency="true">mvn:org.modeshape/modeshape-jcr-api/${modeshape.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-kernel-api/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-kernel-api/${fcrepo.version}</bundle>
   </feature>
 
   <feature name="fcrepo-metrics" version="${project.version}" description="Fedora Repository Metrics Module" resolver="(obr)" start-level="50">
@@ -55,7 +55,7 @@
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson25.version}</bundle>
     <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson25.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-metrics/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-metrics/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -65,7 +65,7 @@
     <feature version="${project.version}">fcrepo-metrics</feature>
     <feature version="${project.version}">fcrepo-kernel-api</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-mint/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-mint/${fcrepo.mint.version}</bundle>
   </feature>
 
 
@@ -103,7 +103,7 @@
     <bundle dependency="true">mvn:org.jgroups/jgroups/${jgroups.version}</bundle>
     <bundle dependency="true">mvn:org.jboss.logging/jboss-logging/${jboss.logging.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-kernel-modeshape/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-kernel-modeshape/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -119,7 +119,7 @@
 
     <bundle dependency="true">mvn:org.glassfish.hk2.external/javax.inject/${hk2.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-jms/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-jms/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -128,7 +128,7 @@
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-serialization/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-serialization/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -138,7 +138,7 @@
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-auth-common/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-common/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -148,7 +148,7 @@
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-connector-file/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-connector-file/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -190,7 +190,7 @@
     <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-model/${sesame.version}</bundle>
     <bundle dependency="true">wrap:mvn:org.openrdf.sesame/sesame-util/${sesame.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-http-commons/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-http-commons/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -207,7 +207,7 @@
     <bundle dependency="true">mvn:commons-lang/commons-lang/${commons-lang2.version}</bundle>
     <bundle dependency="true">mvn:commons-collections/commons-collections/${commons.collections.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-http-api/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-http-api/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -228,8 +228,7 @@
     <bundle dependency="true">wrap:mvn:org.apache.marmotta/ldpath-backend-jena/${ldpath.version}</bundle>
     <bundle dependency="true">wrap:mvn:org.apache.marmotta/ldpath-api/${ldpath.version}</bundle>
 
-    <!-- this anticipates that the fcrepo-transform module uses the new org.fcrepo.transform groupId, based on fcrepo-1670 -->
-    <bundle>mvn:org.fcrepo/fcrepo-transform/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo.transform/fcrepo-transform/${fcrepo.transform.version}</bundle>
   </feature>
 
 
@@ -247,8 +246,8 @@
     <bundle dependency="true">wrap:mvn:org.jboss.security/jboss-xacml/${jboss.security.version}</bundle>
     <bundle dependency="true">wrap:mvn:org.jboss.security/jboss-sunxacml/${jboss.security.version}</bundle>
 
-    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
-    <bundle>mvn:org.fcrepo/fcrepo-module-auth-xacml/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${fcrepo.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-module-auth-xacml/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -260,8 +259,8 @@
     <feature version="${project.version}">fcrepo-auth-common</feature>
     <feature version="${project.version}">fcrepo-http-commons</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
-    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-basic/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${fcrepo.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-basic/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -273,8 +272,8 @@
     <feature version="${project.version}">fcrepo-auth-common</feature>
     <feature version="${project.version}">fcrepo-http-commons</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${project.version}</bundle>
-    <bundle>mvn:org.fcrepo/fcrepo-module-auth-webac/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-auth-roles-common/${fcrepo.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-module-auth-webac/${fcrepo.version}</bundle>
   </feature>
 
 
@@ -284,7 +283,7 @@
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
 
-    <bundle>mvn:org.fcrepo/fcrepo-audit/${project.version}</bundle>
+    <bundle>mvn:org.fcrepo/fcrepo-audit/${fcrepo.audit.version}</bundle>
   </feature>
 
 </features>

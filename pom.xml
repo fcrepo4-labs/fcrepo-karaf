@@ -31,6 +31,10 @@
       replacements of "fcrepo4" in child modules (for scm, site-distribution, etc -->
     <project_name>fcrepo-karaf</project_name>
     <project_organization>fcrepo4-labs</project_organization>
+    <fcrepo.version>4.4.1-SNAPSHOT</fcrepo.version>
+    <fcrepo.transform.version>4.4.1-SNAPSHOT</fcrepo.transform.version>
+    <fcrepo.audit.version>4.4.1-SNAPSHOT</fcrepo.audit.version>
+    <fcrepo.mint.version>4.4.1-SNAPSHOT</fcrepo.mint.version>
 
     <!-- the dropwizard bundles require jackson 2.5.0 -->
     <jackson25.version>2.5.0</jackson25.version>
