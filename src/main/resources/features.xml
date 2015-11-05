@@ -76,7 +76,6 @@
 
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-metrics</feature>
-    <feature version="${project.version}">fcrepo-mint</feature>
 
     <feature version="${infinispan.version}">infinispan-core</feature>
     <feature version="${infinispan.version}">infinispan-commons</feature>
@@ -158,7 +157,6 @@
     <feature>spring-web</feature>
     <feature version="${project.version}">fcrepo-kernel-api</feature>
     <feature version="${project.version}">fcrepo-metrics</feature>
-    <feature version="${project.version}">fcrepo-mint</feature>
     <feature version="${project.version}">fcrepo-kernel-modeshape</feature>
     <feature version="${project.version}">fcrepo-serialization</feature>
 
