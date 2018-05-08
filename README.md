@@ -25,4 +25,3 @@ And to install individual `fcrepo` modules:
 
 ## Maintainers
 
-* [Aaron Coburn](https://github.com/acoburn)
